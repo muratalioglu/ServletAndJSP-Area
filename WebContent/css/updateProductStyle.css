@@ -1,0 +1,31 @@
+a {
+	border: 1px solid;
+	padding: 10px;
+	font-family: Sans-Serif;
+}
+	
+a:visited {
+	color: blue;
+}
+
+a:hover {
+	color: black;
+	background-color: powderblue;
+}
+
+th {
+	background-color: powderblue;
+	border-bottom: 1px solid black;
+	font-family: Sans-Serif;
+}
+
+td {
+	text-align: left;
+	font-family: Sans-Serif;
+	padding: 10px;
+}
+
+img {
+	height: 10%;
+	width: 10%;
+}
