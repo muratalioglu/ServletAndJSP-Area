@@ -10,10 +10,8 @@
 <link rel="stylesheet" type="text/css" href="css/productsTableStyle.css">
 </head>
 <body>
-	<sql:setDataSource var="db"
-					   driver="com.mysql.cj.jdbc.Driver"
-					   url="jdbc:mysql://localhost/tododb"
-					   user="root" password="1D952tnZ" />
+	<sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost/tododb"
+		user="root" password="1D952tnZ" />
 					   
 	<sql:query dataSource="${db}" var="resultSet">
 		SELECT * FROM Products;
@@ -25,7 +23,11 @@
 				<td><c:out value="${product.name}"/></td>
 				<td><c:out value="${product.stock}"/></td>
 				<td><img src="img/${product.img_name}"/></td>
-				<td><form method="POST" action="updateProduct"><button type="submit" name="id" value="${product.id}">Edit</button></form></td>
+				<td>
+					<form method="POST" action="updateProduct">
+						<button type="submit" name="id" value="${product.id}">Edit</button>
+					</form>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
