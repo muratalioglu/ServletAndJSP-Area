@@ -1,0 +1,16 @@
+th {
+	background-color: powderblue;
+	border-bottom: 1px solid black;
+	font-family: Sans-Serif;
+}
+
+td {
+	text-align: center;
+	font-family: Sans-Serif;
+	padding: 10px;
+}
+
+img {
+	height: 10%;
+	width: 10%;
+}

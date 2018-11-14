@@ -1,0 +1,14 @@
+a {
+	border: 1px solid;
+	padding: 10px;
+	font-family: Sans-Serif;
+}
+	
+a:visited {
+	color: blue;
+}
+
+a:hover {
+	color: black;
+	background-color: powderblue;
+}
