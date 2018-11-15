@@ -4,6 +4,10 @@ th {
 	font-family: Sans-Serif;
 }
 
+tr:hover {
+	background-color: #f2f2f2;
+}
+
 td {
 	text-align: center;
 	font-family: Sans-Serif;
@@ -11,6 +15,7 @@ td {
 }
 
 img {
-	height: 10%;
-	width: 10%;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 100px;
 }
