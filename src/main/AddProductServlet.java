@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AddProductServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         
-        if (!parametersAreEmpty(request)) {
+        if (!fieldsAreEmpty(request)) {
             String productName = request.getParameter("productName");
             int stock = Integer.parseInt(request.getParameter("stock"));
             String imgName = request.getParameter("imgName");
@@ -29,7 +29,7 @@ public class AddProductServlet extends HttpServlet {
         }     
     }
     
-    private boolean parametersAreEmpty(HttpServletRequest r) {
+    private boolean fieldsAreEmpty(HttpServletRequest r) {
         return r.getParameter("productName").length() == 0 || r.getParameter("stock").length() == 0 || r.getParameter("imgName").length() == 0;
     }
 }
