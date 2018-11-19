@@ -26,7 +26,7 @@
 					<td><c:out value="${product.stock}"/></td>
 					<td><img class="thumbnail" src="img/${product.img_name}"/></td>
 					<td>
-						<form method="POST" action="updateProduct">
+						<form method="POST" action="find">
 							<button type="submit" name="id" value="${product.id}">Edit</button>
 						</form>
 					</td>

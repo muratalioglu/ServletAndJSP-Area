@@ -29,20 +29,20 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>UpdateProductServlet</servlet-name>
-  	<servlet-class>main.UpdateProductServlet</servlet-class>
+  	<servlet-name>FindProductServlet</servlet-name>
+  	<servlet-class>main.FindProductServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>UpdateProductServlet</servlet-name>
-  	<url-pattern>/updateProduct</url-pattern>
+  	<servlet-name>FindProductServlet</servlet-name>
+  	<url-pattern>/find</url-pattern>
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>DoUpdateServlet</servlet-name>
-  	<servlet-class>main.DoUpdateServlet</servlet-class>
+  	<servlet-name>UpdateServlet</servlet-name>
+  	<servlet-class>main.UpdateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>DoUpdateServlet</servlet-name>
-  	<url-pattern>/doUpdate</url-pattern>
+  	<servlet-name>UpdateServlet</servlet-name>
+  	<url-pattern>/update</url-pattern>
   </servlet-mapping>
 </web-app>
