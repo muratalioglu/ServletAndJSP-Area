@@ -6,6 +6,12 @@ public class Product {
     private int stock;
     private String imgName;
     
+    public Product(int id, String name, int stock) {
+        this.id = id;
+        this.name = name;
+        this.stock = stock;
+    }
+    
     public Product(String name, int stock, String imgName) {
         this.name = name;
         this.stock = stock;

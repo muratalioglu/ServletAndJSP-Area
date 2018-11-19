@@ -17,9 +17,9 @@ public class AddProductServlet extends HttpServlet {
             Product product = new Product(request.getParameter("productName"),
                                             Integer.parseInt(request.getParameter("stock")),
                                             request.getParameter("imgName"));
-            ProductDAOImpl productDAOImpl = new ProductDAOImpl();
-            productDAOImpl.getConnection();
-            if (productDAOImpl.add(product)) {
+            ProductDAO productDAO = new ProductDAO();
+            productDAO.getConnection();
+            if (productDAO.add(product)) {
                 response.sendRedirect("addProductSuccessful.html");
             } else {
                 response.sendRedirect("addProductFailed.html");

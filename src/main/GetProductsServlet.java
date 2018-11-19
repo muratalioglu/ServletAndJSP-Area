@@ -16,9 +16,9 @@ public class GetProductsServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null) {
             if (session.getAttribute("currentSessionUser") != null) {
-                ProductDAOImpl productDAOImpl = new ProductDAOImpl();
-                productDAOImpl.getConnection();
-                List<Product> products = productDAOImpl.get();
+                ProductDAO productDAO = new ProductDAO();
+                productDAO.getConnection();
+                List<Product> products = productDAO.get();
                 session.setAttribute("products", products);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("products.jsp");
                 dispatcher.forward(request, response);
