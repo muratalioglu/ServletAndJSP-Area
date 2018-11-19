@@ -3,7 +3,11 @@ package main;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDAOImpl implements ProductDAO {
 
@@ -33,5 +37,24 @@ public class ProductDAOImpl implements ProductDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public List<Product> get() {
+        List<Product> products = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM products;");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Product product = new Product(resultSet.getInt(1),
+                                                resultSet.getString(2),
+                                                resultSet.getInt(3),
+                                                resultSet.getString(4));
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
     }
 }

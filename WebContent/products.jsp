@@ -7,29 +7,35 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>products.jsp</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/productsTableStyle.css">
 </head>
 <body>
-	<sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost/tododb"
-		user="root" password="1D952tnZ" />
+	<c:if test="${not empty sessionScope.currentSessionUser}">
+		<sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost/tododb"
+			user="root" password="1D952tnZ" />
 					   
-	<sql:query dataSource="${db}" var="resultSet">
-		SELECT * FROM Products;
-	</sql:query>
-	<table>
-		<tr><th>Name</th><th>Stock</th><th>Image</th><th>...</th></tr>
-		<c:forEach var="product" items="${resultSet.rows}">
-			<tr>
-				<td><c:out value="${product.name}"/></td>
-				<td><c:out value="${product.stock}"/></td>
-				<td><img class="thumbnail" src="img/${product.img_name}"/></td>
-				<td>
-					<form method="POST" action="updateProduct">
-						<button type="submit" name="id" value="${product.id}">Edit</button>
-					</form>
-				</td>
-			</tr>
-		</c:forEach>
-	</table>
+		<sql:query dataSource="${db}" var="resultSet">
+			SELECT * FROM Products;
+		</sql:query>
+		<table>
+			<tr><th>Name</th><th>Stock</th><th>Image</th><th>...</th></tr>
+			<c:forEach var="product" items="${resultSet.rows}">
+				<tr>
+					<td><c:out value="${product.name}"/></td>
+					<td><c:out value="${product.stock}"/></td>
+					<td><img class="thumbnail" src="img/${product.img_name}"/></td>
+					<td>
+						<form method="POST" action="updateProduct">
+							<button type="submit" name="id" value="${product.id}">Edit</button>
+						</form>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
+	<c:if test="${empty sessionScope.currentSessionUser}">
+		Not logged in.
+	</c:if>
 </body>
 </html>

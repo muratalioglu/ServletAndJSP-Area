@@ -6,19 +6,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<c:if test="${not empty sessionScope.currentSessionUser}">
-		<p><a href="logout">Logout</a>
-	    <a href="addProduct.jsp">Add Product</a></p>
-	    <hr>
-	    <c:import url="products.jsp"/>
-	</c:if>
-	<c:if test="${empty sessionScope.currentSessionUser}">
-		<p><a href="login.html">Login</a>
-    	<a href="register.html">Register</a></p>
-    	<hr>
-	</c:if>
+<c:if test="${not empty sessionScope.currentSessionUser}">
+	<p>
+		<a href="./logout">Logout</a>
+		<a href="./addProduct.jsp">Add Product</a>
+	</p>
+	<jsp:include page="products.jsp"/>
+</c:if>
+<c:if test="${empty sessionScope.currentSessionUser}">
+	<c:redirect url="login.html"/>
+</c:if>
 </body>
 </html>

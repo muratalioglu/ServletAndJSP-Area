@@ -21,6 +21,6 @@
 		</form>
 		<br>
 		<br>
-		<a href="index.jsp">Home Page</a><br>	
+		<a href="./">Home Page</a><br>	
 </body>
 </html>
