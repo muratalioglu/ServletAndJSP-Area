@@ -56,6 +56,24 @@ public class ProductDAO {
         }
         return products;
     }
+    
+    public Product get(int id) {
+        Product product = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE id = ?;");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                product = new Product(resultSet.getInt(1),
+                                      resultSet.getString(2),
+                                      resultSet.getInt(3),
+                                      resultSet.getString(4));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
+    }
 
     public boolean update(Product product) {
         try {
