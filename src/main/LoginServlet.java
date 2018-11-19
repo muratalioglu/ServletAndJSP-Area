@@ -20,6 +20,10 @@ public class LoginServlet extends HttpServlet {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         
+        if (name.length() == 0 || password.length() == 0) {
+            response.sendRedirect("loginFailed.html");
+        }
+        
         Connection conn = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
