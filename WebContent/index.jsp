@@ -15,5 +15,10 @@
 	    <hr>
 	    <c:import url="products.jsp"/>
 	</c:if>
+	<c:if test="${empty sessionScope.currentSessionUser}">
+		<p><a href="login.html">Login</a>
+    	<a href="register.html">Register</a></p>
+    	<hr>
+	</c:if>
 </body>
 </html>
