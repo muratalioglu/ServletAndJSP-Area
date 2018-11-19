@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,29 +9,11 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<%
-	HttpSession sess = request.getSession(false);
-	if (sess == null) {
-    	out.write("<a href=\"login.html\">Login</a> ");
-    	out.write("<a href=\"register.html\">Register</a></p>");
-    	out.write("<hr>");
-    	out.write("Not logged in.");
-	} else {
-	    if (sess.getAttribute("currentSessionUser") == null) {
-	        out.write("<p><a href=\"login.html\">Login</a> ");
-	    	out.write("<a href=\"register.html\">Register</a></p>");	        
-	    	out.write("<hr>");
-	    	out.write("Not logged in.");
-	    } else {
-	        out.write("<p><a href=\"logout\">Logout</a>");
-	        out.write("<a href=\"addProduct.jsp\">Add Product</a></p>");
-	        out.write("<hr>");	 
-	        out.write("Welcome " + sess.getAttribute("currentSessionUser"));	        
-	    }
-	}
-%>
-<%	if (sess.getAttribute("currentSessionUser") != null) {	    %>
-	    <jsp:include page="products.jsp"/>
-	<% } %>
+	<c:if test="${not empty sessionScope.currentSessionUser}">
+		<p><a href="logout">Logout</a>
+	    <a href="addProduct.jsp">Add Product</a></p>
+	    <hr>
+	    <c:import url="products.jsp"/>
+	</c:if>
 </body>
 </html>
