@@ -6,10 +6,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Update product</title>
+<script>
+	function validate() {
+		if (document.getElementById("productName").value.length == 0 ||
+			document.getElementById("stock").value.length == 0 ||
+			document.getElementById("imgName").value.length == 0) {
+			return false;
+		}
+		return true;
+	}
+</script>
 <link rel="stylesheet" type="text/css" href="css/updateProductStyle.css">
 </head>
 <body>
+		<p><a href="./">Home Page</a><br></p>
 		<form method="POST" action="update">
 			<table>
 				<tr><td>ID: </td><td><input type="hidden" name="id" value="${product.id}"/></td>
@@ -20,7 +31,6 @@
 			</table>
 		</form>
 		<br>
-		<br>
-		<a href="./">Home Page</a><br>	
+		<br>			
 </body>
 </html>
