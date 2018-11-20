@@ -13,7 +13,7 @@
 		<a href="./logout">Logout</a>
 		<a href="./addProduct.jsp">Add Product</a>
 	</p>
-	<jsp:include page="products.jsp"/>
+	<jsp:include page="WEB-INF/products.jsp"/>
 </c:if>
 <c:if test="${empty sessionScope.currentSessionUser}">
 	<c:redirect url="login.jsp"/>

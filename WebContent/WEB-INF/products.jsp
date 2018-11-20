@@ -34,8 +34,5 @@
 			</c:forEach>
 		</table>
 	</c:if>
-	<c:if test="${empty sessionScope.currentSessionUser}">
-		Not logged in.
-	</c:if>
 </body>
 </html>
