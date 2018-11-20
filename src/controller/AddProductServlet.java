@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ProductDAO;
 import model.Product;
-import model.ProductDAO;
 
 @WebServlet("/addProduct")
 public class AddProductServlet extends HttpServlet {

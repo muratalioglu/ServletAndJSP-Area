@@ -1,9 +1,11 @@
-package model;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import model.User;
 
 public class UserDAO {
 
@@ -36,6 +38,24 @@ public class UserDAO {
                 }
             }
             
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean register(User user) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE name = ?;");
+            statement.setString(1, user.getName());
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                statement = connection.prepareStatement("INSERT INTO users (name, password) VALUES (?, ?);");
+                statement.setString(1, user.getName());
+                statement.setString(2, user.getPassword());
+                
+                return statement.executeUpdate() == 1;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -22,7 +22,7 @@
 <c:if test="${empty sessionScope.currentSessionUser }">
 	<p>
 		<a href="./">Home page</a>
-		<a href="./register.html">Register</a>
+		<a href="./register.jsp">Register</a>
 	</p>
 	<hr>
 	<form method="POST" action="login" onsubmit="return validate();">
