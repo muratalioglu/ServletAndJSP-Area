@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Home Page</title>
 </head>
 <body>
 <c:if test="${not empty sessionScope.currentSessionUser}">
@@ -16,7 +16,7 @@
 	<jsp:include page="products.jsp"/>
 </c:if>
 <c:if test="${empty sessionScope.currentSessionUser}">
-	<c:redirect url="login.html"/>
+	<c:redirect url="login.jsp"/>
 </c:if>
 </body>
 </html>

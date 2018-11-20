@@ -3,7 +3,7 @@
     
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>main.LoginServlet</servlet-class>
+    <servlet-class>controller.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -12,7 +12,7 @@
   
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
-    <servlet-class>main.LogoutServlet</servlet-class>
+    <servlet-class>controller.LogoutServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
@@ -21,7 +21,7 @@
   
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>main.RegisterServlet</servlet-class>
+    <servlet-class>controller.RegisterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
@@ -30,7 +30,7 @@
   
   <servlet>
   	<servlet-name>FindProductServlet</servlet-name>
-  	<servlet-class>main.FindProductServlet</servlet-class>
+  	<servlet-class>controller.FindProductServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>FindProductServlet</servlet-name>
@@ -39,7 +39,7 @@
   
   <servlet>
   	<servlet-name>UpdateServlet</servlet-name>
-  	<servlet-class>main.UpdateServlet</servlet-class>
+  	<servlet-class>controller.UpdateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>UpdateServlet</servlet-name>
