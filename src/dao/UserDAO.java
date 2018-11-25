@@ -23,18 +23,18 @@ public class UserDAO {
     }
 
     public boolean login(User user) {
+        final String query = "SELECT password FROM users WHERE name = ?;";
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT password FROM users WHERE name = ?;");
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, user.getName());
-            ResultSet resultSet = statement.executeQuery();
             
+            ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                String passwordFromDB = resultSet.getString("password");
+                String actualPassword = resultSet.getString("password");
                 
-                if (passwordFromDB != null) {
-                    if (passwordFromDB.equals(user.getPassword())) {
-                        return true;
-                    }
+                if (actualPassword != null && 
+                    actualPassword.equals(user.getPassword())) {
+                    return true;
                 }
             }
             
@@ -45,16 +45,17 @@ public class UserDAO {
     }
     
     public boolean register(User user) {
+        final String query = "SELECT * FROM users WHERE name = ?;";
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE name = ?;");
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, user.getName());
+            
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 statement = connection.prepareStatement("INSERT INTO users (name, password) VALUES (?, ?);");
                 statement.setString(1, user.getName());
-                statement.setString(2, user.getPassword());
-                
-                return statement.executeUpdate() == 1;
+                statement.setString(2, user.getPassword());                
+                return statement.executeUpdate() == 1;                
             }
         } catch (Exception e) {
             e.printStackTrace();

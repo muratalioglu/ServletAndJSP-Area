@@ -26,14 +26,14 @@ public class ProductDAO {
     }
     
     public boolean add(Product product) {
-        PreparedStatement statement;
-        try {
-            statement = connection.prepareStatement("INSERT INTO products (name, stock, img_name) VALUES (?, ?, ?);");
+        final String query = "INSERT INTO products (name, stock, img_name) VALUES (?, ?, ?);";
+        try {            
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, product.getName());
             statement.setInt(2, product.getStock());
-            statement.setString(3, product.getImgName());
-            
+            statement.setString(3, product.getImgName());            
             return statement.executeUpdate() == 1;
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,9 +41,10 @@ public class ProductDAO {
     }
 
     public List<Product> get() {
+        final String query = "SELECT * FROM products;";
         List<Product> products = new ArrayList<>();
-        try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM products;");
+        try {            
+            PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Product product = new Product(resultSet.getInt(1),
@@ -59,10 +60,12 @@ public class ProductDAO {
     }
     
     public Product get(int id) {
+        final String query = "SELECT * FROM products WHERE id = ?;";
         Product product = null;
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE id = ?;");
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, id);
+            
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 product = new Product(resultSet.getInt(1),
@@ -77,16 +80,18 @@ public class ProductDAO {
     }
 
     public boolean update(Product product) {
+        final String query;
         try {
             PreparedStatement statement = null;
-            
             if (product.getImgName() == null) {
-                statement = connection.prepareStatement("UPDATE products SET name = ?, stock = ? WHERE id = ?;");               
+                query = "UPDATE products SET name = ?, stock = ? WHERE id = ?;";
+                statement = connection.prepareStatement(query);               
                 statement.setString(1, product.getName());
                 statement.setInt(2, product.getStock());
                 statement.setInt(3, product.getId());
             } else {
-                statement = connection.prepareStatement("UPDATE products SET name = ?, stock = ?, img_name = ? WHERE id = ?;");
+                query = "UPDATE products SET name = ?, stock = ?, img_name = ? WHERE id = ?;";
+                statement = connection.prepareStatement(query);
                 statement.setString(1, product.getName());
                 statement.setInt(2, product.getStock());
                 statement.setString(3, product.getImgName());
@@ -94,7 +99,7 @@ public class ProductDAO {
             }            
             return statement.executeUpdate() == 1;
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
