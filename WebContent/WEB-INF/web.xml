@@ -29,6 +29,15 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>AddProductServlet</servlet-name>
+  	<servlet-class>controller.AddProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddProductServlet</servlet-name>
+  	<url-pattern>/addProduct</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>FindProductServlet</servlet-name>
   	<servlet-class>controller.FindProductServlet</servlet-class>
   </servlet>
