@@ -15,9 +15,7 @@ public class FindProductServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
             final int id = Integer.parseInt(request.getParameter("id"));
-            ProductDAO productDAO = new ProductDAO();
-            productDAO.getConnection();
-            Product product = productDAO.get(id);
+            Product product = getProduct(id);
             if (product != null) {
                 request.setAttribute("product", product);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("updateProduct.jsp");
@@ -28,5 +26,12 @@ public class FindProductServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private Product getProduct(final int id) {
+        ProductDAO productDAO = new ProductDAO();
+        productDAO.getConnection();
+        Product product = productDAO.get(id);
+        return product;
     }
 }

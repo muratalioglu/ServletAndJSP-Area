@@ -19,9 +19,8 @@ public class GetProductsServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null) {
             if (session.getAttribute("currentSessionUser") != null) {
-                ProductDAO productDAO = new ProductDAO();
-                productDAO.getConnection();
-                List<Product> products = productDAO.get();
+                List<Product> products = getProducts();
+                
                 session.setAttribute("products", products);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("products.jsp");
                 dispatcher.forward(request, response);
@@ -29,5 +28,12 @@ public class GetProductsServlet extends HttpServlet {
         } else {
             response.sendRedirect("login.html");
         }
+    }
+
+    private List<Product> getProducts() {
+        ProductDAO productDAO = new ProductDAO();
+        productDAO.getConnection();
+        List<Product> products = productDAO.get();
+        return products;
     }
 }   
