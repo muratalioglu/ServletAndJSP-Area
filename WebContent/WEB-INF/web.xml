@@ -54,4 +54,15 @@
   	<servlet-name>UpdateServlet</servlet-name>
   	<url-pattern>/update</url-pattern>
   </servlet-mapping>
+  
+  <filter>
+  	<filter-name>LoginControl</filter-name>
+  	<filter-class>filter.LoginControl</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>LoginControl</filter-name>
+  	<url-pattern>/addProduct.jsp</url-pattern>
+  	<url-pattern>/updateProduct.jsp</url-pattern>
+  </filter-mapping>
+  
 </web-app>
