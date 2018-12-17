@@ -12,6 +12,8 @@ import dao.ProductDAO;
 import model.Product;
 
 public class FindProductServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
             final int id = Integer.parseInt(request.getParameter("id"));
